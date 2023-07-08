@@ -1,7 +1,7 @@
 package org.example.domain;
 
 public class Dollar {
-    private int amount;
+    private int amount = 10;
 
     public Dollar(int amount) {
 
