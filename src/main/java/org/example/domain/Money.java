@@ -13,6 +13,9 @@ public class Money {
         return new Money(amount * multiplier,currency);
     }
 
+    public Money plus(Money addend){
+        return new Money(amount + addend.amount,currency);
+    }
     public int getAmount() {
         return amount;
     }
@@ -28,6 +31,7 @@ public class Money {
     public void setCurrency(String currency) {
         this.currency = currency;
     }
+
 
     public static Money dollar(int amount){
         return new Money(amount,"USD");
