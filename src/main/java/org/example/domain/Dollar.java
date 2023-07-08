@@ -3,8 +3,20 @@ package org.example.domain;
 import java.util.Objects;
 
 public class Dollar extends Money{
+
+    private String currency;
+
     public Dollar(int amount) {
         this.amount = amount;
+        currency = "USD";
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public int getAmount() {
