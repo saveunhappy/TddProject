@@ -1,9 +1,14 @@
 package org.example.domain;
 
 public abstract class Money {
+    protected int amount;
     protected String currency;
 
-    protected int amount;
+    public Money(int amount, String currency) {
+        this.amount = amount;
+        this.currency = currency;
+    }
+
     public abstract Money times(int multiplier);
     public abstract String currency();
     public static Money dollar(int amount){
