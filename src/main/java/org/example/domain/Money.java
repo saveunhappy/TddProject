@@ -3,6 +3,7 @@ package org.example.domain;
 public abstract class Money {
     protected int amount;
     public abstract Money times(int multiplier);
+    public abstract String currency();
     public static Money dollar(int amount){
         return new Dollar(amount);
     }

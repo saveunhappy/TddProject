@@ -19,7 +19,10 @@ public class Dollar extends Money{
         return new Dollar(amount * multiplier);
     }
 
-
+    @Override
+    public String currency() {
+        return "USD";
+    }
     @Override
     public int hashCode() {
         return Objects.hash(amount);
