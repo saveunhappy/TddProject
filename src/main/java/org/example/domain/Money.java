@@ -30,15 +30,15 @@ public class Money {
     }
 
     public static Money dollar(int amount){
-        return new Dollar(amount,"USD");
+        return new Money(amount,"USD");
     }
     public static Money franc(int amount){
-        return new Franc(amount,"CHF");
+        return new Money(amount,"CHF");
     }
     @Override
     public boolean equals(Object o) {
         Money money = (Money) o;
-        return amount == money.amount && getCurrency().equals(((Money) o).getCurrency());
+        return amount == money.amount && money.getCurrency().equals(currency);
     }
 
     @Override
