@@ -2,8 +2,7 @@ package org.example.domain;
 
 import java.util.Objects;
 
-public class Franc {
-    private int amount;
+public class Franc extends Money{
 
     public Franc(int amount) {
         this.amount = amount;
@@ -21,11 +20,7 @@ public class Franc {
         return new Franc(amount * multiplier);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        Franc Franc = (Franc) o;
-        return amount == Franc.amount;
-    }
+
 
     @Override
     public int hashCode() {
