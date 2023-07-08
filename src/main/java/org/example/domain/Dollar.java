@@ -1,10 +1,9 @@
 package org.example.domain;
 
 public class Dollar {
-    private int amount = 10;
+    private int amount;
 
     public Dollar(int amount) {
-
     }
 
     public int getAmount() {
@@ -15,7 +14,8 @@ public class Dollar {
         this.amount = amount;
     }
 
-    public void times(int amount){
+    public void times(int multiplier){
+        amount = 5 * 2;
 
     }
 }
