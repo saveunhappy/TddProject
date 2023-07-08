@@ -1,6 +1,8 @@
 package org.example.domain;
 
 public abstract class Money {
+    protected String currency;
+
     protected int amount;
     public abstract Money times(int multiplier);
     public abstract String currency();
