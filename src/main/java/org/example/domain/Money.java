@@ -1,6 +1,6 @@
 package org.example.domain;
 
-public abstract class Money {
+public class Money {
     protected int amount;
     protected String currency;
 
@@ -9,8 +9,26 @@ public abstract class Money {
         this.currency = currency;
     }
 
-    public abstract Money times(int multiplier);
-    public abstract String currency();
+    public Money times(int multiplier){
+        return new Money(amount * multiplier,currency);
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
     public static Money dollar(int amount){
         return new Dollar(amount,"USD");
     }
@@ -20,6 +38,14 @@ public abstract class Money {
     @Override
     public boolean equals(Object o) {
         Money money = (Money) o;
-        return amount == money.amount && getClass().equals(money.getClass());
+        return amount == money.amount && getCurrency().equals(((Money) o).getCurrency());
+    }
+
+    @Override
+    public String toString() {
+        return "Money{" +
+                "amount=" + amount +
+                ", currency='" + currency + '\'' +
+                '}';
     }
 }

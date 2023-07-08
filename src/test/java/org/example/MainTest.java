@@ -32,7 +32,12 @@ public class MainTest {
     }
     @Test
     public void testCurrency(){
-        assertEquals("USD",Money.dollar(1).currency());
-        assertEquals("CHF",Money.franc(1).currency());
+        assertEquals("USD",Money.dollar(1).getCurrency());
+        assertEquals("CHF",Money.franc(1).getCurrency());
+    }
+    @Test
+    public void testDifferentClassEquality(){
+        assertEquals(new Money(10,"CHF"),new Franc(10,"CHF"));
+        assertEquals(new Money(10,"USD"),new Dollar(10,"USD"));
     }
 }
