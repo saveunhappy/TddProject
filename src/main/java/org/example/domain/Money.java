@@ -43,6 +43,10 @@ public class Money implements Expression{
     public static Money franc(int amount){
         return new Money(amount,"CHF");
     }
+
+    public Money reduce(String to){
+        return this;
+    }
     @Override
     public boolean equals(Object o) {
         Money money = (Money) o;
