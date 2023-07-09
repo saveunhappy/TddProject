@@ -1,12 +1,14 @@
 package org.example;
 
+import org.example.domain.Bank;
 import org.example.domain.Money;
+import org.example.domain.Sum;
+import org.example.service.Expression;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MainTest {
-
     @Test
     public void testMultiplication(){
         Money five = Money.dollar(5);
@@ -33,7 +35,18 @@ public class MainTest {
     }
     @Test
     public void testSimpleAddition(){
-        Money sum = Money.dollar(5).plus(Money.dollar(5));
-        assertEquals(Money.dollar(10),sum);
+        Money five = Money.dollar(5);
+        Expression sum = five.plus(five);
+        Bank bank = new Bank();
+        Money reduce = bank.reduce(sum,"USD");
+        assertEquals(Money.dollar(10),reduce);
+    }
+    @Test
+    public void testPlusReturnSum(){
+        Money five = Money.dollar(5);
+        Expression result = five.plus(five);
+        Sum sum = (Sum) result;
+        assertEquals(five,sum.getAugend());
+        assertEquals(five,sum.getAddend());
     }
 }

@@ -1,6 +1,8 @@
 package org.example.domain;
 
-public class Money {
+import org.example.service.Expression;
+
+public class Money implements Expression{
     protected int amount;
     protected String currency;
 
@@ -13,8 +15,10 @@ public class Money {
         return new Money(amount * multiplier,currency);
     }
 
-    public Money plus(Money addend){
-        return new Money(amount + addend.amount,currency);
+    public Expression plus(Money addend){
+//        return new Money(amount + addend.amount,currency);
+        return new Sum(this,addend);
+
     }
     public int getAmount() {
         return amount;
