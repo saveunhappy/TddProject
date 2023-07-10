@@ -5,7 +5,9 @@ import org.example.service.Expression;
 public class Money implements Expression{
     protected int amount;
     protected String currency;
-
+    public String currency() {
+        return currency;
+    }
     public Money(int amount, String currency) {
         this.amount = amount;
         this.currency = currency;
@@ -48,6 +50,12 @@ public class Money implements Expression{
         int rate = bank.rate(currency, to);
         return new Money(amount/rate,to);
     }
+
+    @Override
+    public Expression plus(Expression addend) {
+        return null;
+    }
+
     @Override
     public boolean equals(Object o) {
         Money money = (Money) o;

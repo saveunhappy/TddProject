@@ -1,39 +1,26 @@
 package org.example.domain;
 
 import org.example.service.Expression;
+public class Sum implements Expression{
+    public Expression augend;
+    public Expression addend;
 
-public class Sum implements Expression {
-    private Money augend;
-    private Money addend;
-
-    public Sum(Money augend, Money addend) {
+    public Sum(Expression augend, Expression addend) {
         this.augend = augend;
         this.addend = addend;
     }
 
-    public Money getAugend() {
-        return augend;
-    }
-
-    public void setAugend(Money augend) {
-        this.augend = augend;
-    }
-
-    public Money getAddend() {
-        return addend;
-    }
-
-    public void setAddend(Money addend) {
-        this.addend = addend;
-    }
-
-    public Money rate(String to){
-        int amount = augend.amount + addend.amount;
-        return new Money(amount,to);
+    public Money reduce(Bank bank, String to) {
+        int amount = augend.reduce(bank, to).amount + addend.reduce(bank, to).amount;
+        return new Money(amount, to);
     }
 
     @Override
-    public Money reduce(Bank bank, String to) {
-        return null;
+    public Expression plus(Expression addend) {
+        return new Sum(this, addend);
+    }
+
+    public Expression times(int multiplier) {
+        return new Sum(augend.times(multiplier), addend.times(multiplier));
     }
 }
